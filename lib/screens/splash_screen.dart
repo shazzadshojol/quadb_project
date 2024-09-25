@@ -34,37 +34,45 @@ class _SplashScreenState extends State<SplashScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFFF66CDAA),
-              Color(0xFFF00BFFF),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: Center(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              children: [
-                Image.asset(
-                  'assets/images/search.png',
-                ),
-                const Text(
-                  'Welcome!',
-                  style: TStyle.splashText,
-                )
-              ],
-            ),
-            const LoadingIndicator()
-          ],
-        )),
-      ),
+      body: _buildContainer(),
     );
+  }
+
+  Widget _buildContainer() {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFFF66CDAA),
+            Color(0xFFF00BFFF),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: _buildImageSection(),
+    );
+  }
+
+  Widget _buildImageSection() {
+    return Center(
+        child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Column(
+          children: [
+            Image.asset(
+              'assets/images/search.png',
+            ),
+            const Text(
+              'Welcome!',
+              style: TStyle.splashText,
+            )
+          ],
+        ),
+        const LoadingIndicator()
+      ],
+    ));
   }
 }
